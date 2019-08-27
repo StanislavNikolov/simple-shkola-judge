@@ -17,6 +17,11 @@ app.get('/results/:user/:prob', function(req, res) {
 	res.sendFile(`${__dirname}/results/${user}/${prob}.txt`);
 });
 
+app.get('/statement/:prob', function(req, res) {
+	const prob = req.params.prob;
+	res.sendFile(`${__dirname}/problems/${prob}/statement.html`);
+});
+
 const isValid = name => {
 	try {
 		if(name.length > 20) return false;
@@ -43,7 +48,7 @@ app.post('/submit', function(req, res) {
 
 	if(!isValid(prob)) {
 		console.log(`BAD PROB: ${prob}`);
-		res.send('losho ime, gei');
+		res.send('losha zadacha, gei');
 		return;
 	}
 

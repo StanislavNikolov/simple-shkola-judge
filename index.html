@@ -1,23 +1,26 @@
 <html>
 <body>
 
-Здравей!
-
-<form style="width:80%;height:80%" action="/submit" method="post">
+<form action="/submit" method="post">
 	<!-- DECA -->
-	<input name='user' id='user'></input>
+	Име:<input style="max-width:5rem" name='user' id='user'></input>
 
 	<!-- ZADACHI -->
+	Задача:
 	<select id='prob' name='prob'>
 		<option value="dp1">леха - само число</option>
 		<option value="dp2">леха - число и път</option>
-		<option value="cntsum">брой суми</option>
+		<option value="rodcut">въже</option>
 	</select>
 
 	<br>
 
+	<div id=statement></div>
+
+	<br>
+
 	<!-- CODE -->
-	<textarea style="width:100%;height:100%" id="code" name="code"></textarea>
+	<textarea style="width:100%;height:auto" id="code" name="code"></textarea>
 
 	<br>
 
@@ -32,11 +35,22 @@
 		localStorage.setItem('user', userinp.value);
 	};
 
+	const showStatement = () => {
+		fetch(`/statement/${probinp.value}`)
+		.then(resp => resp.text())
+		.then(html => {
+			document.getElementById('statement').innerHTML = html;
+		});
+	};
+
 	const probinp = document.getElementById('prob');
 	probinp.value = localStorage.getItem('prob');
 	probinp.onchange = () => {
 		localStorage.setItem('prob', probinp.value);
+		showStatement();
 	};
+
+	showStatement();
 </script>
 
 </body>
