@@ -1,0 +1,43 @@
+<html>
+<body>
+
+Здравей!
+
+<form style="width:80%;height:80%" action="/submit" method="post">
+	<!-- DECA -->
+	<input name='user' id='user'></input>
+
+	<!-- ZADACHI -->
+	<select id='prob' name='prob'>
+		<option value="dp1">леха - само число</option>
+		<option value="dp2">леха - число и път</option>
+		<option value="cntsum">брой суми</option>
+	</select>
+
+	<br>
+
+	<!-- CODE -->
+	<textarea style="width:100%;height:100%" id="code" name="code"></textarea>
+
+	<br>
+
+	<!-- SUBMIT -->
+	<input type="submit" value="Submit">
+</form>
+
+<script>
+	const userinp = document.getElementById('user');
+	userinp.value = localStorage.getItem('user');
+	userinp.onchange = () => {
+		localStorage.setItem('user', userinp.value);
+	};
+
+	const probinp = document.getElementById('prob');
+	probinp.value = localStorage.getItem('prob');
+	probinp.onchange = () => {
+		localStorage.setItem('prob', probinp.value);
+	};
+</script>
+
+</body>
+</html>
