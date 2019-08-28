@@ -14,7 +14,7 @@ app.get('/', function(req, res) {
 app.get('/results/:user/:prob', function(req, res) {
 	const user = req.params.user;
 	const prob = req.params.prob;
-	res.sendFile(`${__dirname}/results/${user}/${prob}.txt`);
+	res.sendFile(`${__dirname}/results/${user}/${prob}.html`);
 });
 
 app.get('/statement/:prob', function(req, res) {
