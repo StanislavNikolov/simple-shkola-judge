@@ -28,7 +28,7 @@ const isValid = name => {
 		if(name.length == 0) return false;
 
 		for(const c of name) {
-			if( !('a' <= c && c <= 'z') && !('0' <= c && c <= '9') ) return false;
+			if( !('a' <= c && c <= 'z') && !('0' <= c && c <= '9') && c !== '-' ) return false;
 		}
 		return true;
 	} catch(error) {

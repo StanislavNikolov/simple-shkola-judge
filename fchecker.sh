@@ -49,7 +49,7 @@ do
 			ec=$(<$excode)
 			if [[ "$ec" == "0" ]]
 			then
-				(diff -qb problems/$task/tests/$out $tmpfile > /dev/null && prn_ok $out) || fail_wrong $out
+				(diff -qbZB problems/$task/tests/$out $tmpfile > /dev/null && prn_ok $out) || fail_wrong $out
 			else
 				fail_nonZeroExitCode $out
 			fi
